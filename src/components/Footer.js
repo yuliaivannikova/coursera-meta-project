@@ -1,7 +1,9 @@
+import logo from "../assets/Logo.svg";
+
 export default function Footer() {
   return (
     <footer style={{ background: '#333', color: '#fff', padding: '2rem' }}>
-      <img src="/images/logo.png" alt="Little Lemon Logo" />
+      <img src={logo} alt="Little Lemon Logo" />
       <nav>
         <ul>
           <li><a href="/">Home</a></li>
