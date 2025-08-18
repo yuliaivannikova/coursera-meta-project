@@ -1,322 +1,233 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700;800&family=Markazi+Text:wght@400;500;600;700&display=swap');
 
-@custom-variant dark (&:is(.dark *));
-
+/* ----------------------------- */
+/* THEME VARIABLES */
+/* ----------------------------- */
 :root {
   --font-size: 14px;
+
+  /* Primary */
+  --primary: #495E57;
+  --primary-foreground: #ffffff;
+
+  /* Secondary */
+  --secondary: #F4CE14;
+  --secondary-foreground: #495E57;
+
+  /* Accent & UI */
+  --accent: #EE9972;
+  --accent-foreground: #ffffff;
+  --muted: #EDEFEE;
+  --muted-foreground: #495E57;
+
+  /* Extra palette */
+  --peach: #FBDABB;
+  --dark: #333333;
+
+  /* Text & surfaces */
   --background: #ffffff;
   --foreground: #333333;
   --card: #ffffff;
   --card-foreground: #333333;
-  --popover: #ffffff;
-  --popover-foreground: #333333;
-  --primary: #495E57;
-  --primary-foreground: #ffffff;
-  --secondary: #F4CE14;
-  --secondary-foreground: #495E57;
-  --muted: #EDEFEE;
-  --muted-foreground: #495E57;
-  --accent: #EE9972;
-  --accent-foreground: #ffffff;
-  --destructive: #d4183d;
-  --destructive-foreground: #ffffff;
+
+  /* Borders */
   --border: rgba(73, 94, 87, 0.2);
-  --input: transparent;
-  --input-background: #EDEFEE;
-  --switch-background: #cbced4;
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-  --ring: #F4CE14;
-  --chart-1: #495E57;
-  --chart-2: #F4CE14;
-  --chart-3: #EE9972;
-  --chart-4: #FBDABB;
-  --chart-5: #EDEFEE;
   --radius: 0.5rem;
-  --sidebar: #EDEFEE;
-  --sidebar-foreground: #333333;
-  --sidebar-primary: #495E57;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #F4CE14;
-  --sidebar-accent-foreground: #495E57;
-  --sidebar-border: rgba(73, 94, 87, 0.2);
-  --sidebar-ring: #F4CE14;
+
+  /* Shadows & focus */
+  --ring: #F4CE14;
 }
 
+/* Dark theme */
 .dark {
   --background: #333333;
   --foreground: #ffffff;
+
   --card: #495E57;
   --card-foreground: #ffffff;
-  --popover: #495E57;
-  --popover-foreground: #ffffff;
+
   --primary: #F4CE14;
   --primary-foreground: #495E57;
+
   --secondary: #495E57;
   --secondary-foreground: #F4CE14;
+
   --muted: #495E57;
   --muted-foreground: #EDEFEE;
+
   --accent: #EE9972;
   --accent-foreground: #ffffff;
-  --destructive: #d4183d;
-  --destructive-foreground: #ffffff;
+
   --border: rgba(244, 206, 20, 0.3);
-  --input: #495E57;
   --ring: #F4CE14;
-  --sidebar: #333333;
-  --sidebar-foreground: #ffffff;
-  --sidebar-primary: #F4CE14;
-  --sidebar-primary-foreground: #495E57;
-  --sidebar-accent: #EE9972;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: rgba(244, 206, 20, 0.3);
-  --sidebar-ring: #F4CE14;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-input-background: var(--input-background);
-  --color-switch-background: var(--switch-background);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(
-    --sidebar-primary-foreground
-  );
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(
-    --sidebar-accent-foreground
-  );
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-    font-family: 'Karla', sans-serif;
-  }
-}
-
-/**
- * Base typography using Little Lemon brand fonts
- */
-@layer base {
-  :where(
-    :not(:has([class*=" text-"]), :not(:has([class^="text-"])))
-  ) {
-    h1 {
-      font-family: 'Markazi Text', serif;
-      font-size: 4rem;
-      font-weight: 500;
-      line-height: 1.2;
-    }
-
-    h2 {
-      font-family: 'Markazi Text', serif;
-      font-size: 2.5rem;
-      font-weight: 400;
-      line-height: 1.3;
-    }
-
-    h3 {
-      font-family: 'Karla', sans-serif;
-      font-size: 1.125rem;
-      font-weight: 800;
-      line-height: 1.4;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    h4 {
-      font-family: 'Karla', sans-serif;
-      font-size: 1.125rem;
-      font-weight: 700;
-      line-height: 1.4;
-    }
-
-    p {
-      font-family: 'Karla', sans-serif;
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1.5;
-    }
-
-    label {
-      font-family: 'Karla', sans-serif;
-      font-size: 1rem;
-      font-weight: 500;
-      line-height: 1.4;
-    }
-
-    button {
-      font-family: 'Karla', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      line-height: 1.4;
-    }
-
-    input {
-      font-family: 'Karla', sans-serif;
-      font-size: 1rem;
-      font-weight: 400;
-      line-height: 1.4;
-    }
-  }
+/* ----------------------------- */
+/* RESET */
+/* ----------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
   font-size: var(--font-size);
 }
 
-/* Little Lemon specific classes */
+body {
+  font-family: 'Karla', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  background: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+}
+
+/* ----------------------------- */
+/* TYPOGRAPHY (Little Lemon style) */
+/* ----------------------------- */
+
+h1,
 .display-title {
   font-family: 'Markazi Text', serif;
-  font-size: 4rem;
+  font-size: 4rem; /* 64px */
   font-weight: 500;
   line-height: 1.2;
+  color: var(--primary);
 }
 
+h2,
 .sub-title {
   font-family: 'Markazi Text', serif;
-  font-size: 2.5rem;
+  font-size: 2.5rem; /* 40px */
   font-weight: 400;
   line-height: 1.3;
+  color: var(--primary);
 }
 
-.lead-text {
-  font-family: 'Karla', sans-serif;
-  font-size: 1.125rem;
-  font-weight: 500;
-  line-height: 1.5;
-}
-
+h3,
 .section-title {
   font-family: 'Karla', sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.25rem; /* 20px */
   font-weight: 800;
   line-height: 1.4;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  color: var(--foreground);
 }
 
+h4,
 .card-title {
   font-family: 'Karla', sans-serif;
-  font-size: 1.125rem;
+  font-size: 1.125rem; /* 18px */
   font-weight: 700;
   line-height: 1.4;
 }
 
+p,
 .paragraph-text {
   font-family: 'Karla', sans-serif;
-  font-size: 1rem;
+  font-size: 1rem; /* 16px */
   font-weight: 400;
   line-height: 1.5;
   max-width: 65ch;
+}
+
+.lead-text {
+  font-family: 'Karla', sans-serif;
+  font-size: 1.125rem; /* 18px */
+  font-weight: 500;
+  line-height: 1.5;
 }
 
 .highlight-text {
   font-family: 'Karla', sans-serif;
   font-size: 1rem;
   font-weight: 500;
-  line-height: 1.4;
+  color: var(--secondary);
 }
 
-/* Global reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    line-height: 1.5;
-  }
-  img {max-width: 100%;}
-  /* Navigation */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-  }
-  
-  nav ul {
-    display: flex;
-    gap: 1rem;
-    list-style: none;
-  }
-  
-  nav a {
-    text-decoration: none;
-    color: black;
-  }
-  
-  /* Hero */
-  #hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2rem;
-  }
-  
-  /* Highlights */
-  #highlights .specials-container {
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-  }
-  
-  .dish-card {
-    min-width: 200px;
-    border: 1px solid #ccc;
-    padding: 1rem;
-  }
-  
-  /* Testimonials */
-  #testimonials .reviews {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-  }
-  
-  /* Footer */
-  footer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 2rem;
-    background: #333;
-    color: #fff;
-  }
+/* ----------------------------- */
+/* GLOBAL ELEMENTS */
+/* ----------------------------- */
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: var(--primary);
+}
+
+button {
+  font-family: 'Karla', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+button:hover {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ----------------------------- */
+/* SECTIONS (base layout) */
+/* ----------------------------- */
+
+#hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+#highlights .specials-container {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+}
+
+.dish-card {
+  min-width: 200px;
+  border: 1px solid var(--border);
+  padding: 1rem;
+  border-radius: var(--radius);
+}
+
+#testimonials .reviews {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 2rem;
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
