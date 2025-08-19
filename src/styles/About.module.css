@@ -1,0 +1,130 @@
+/* About.module.css */
+
+.about {
+  padding: 2rem 0;
+  background: var(--background);
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.aboutContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.textContent {
+  order: 2;
+}
+
+/* Uses global h1 styling from global.css */
+.textContent h1 {
+  margin: 0 0 0.5rem 0;
+}
+
+/* Uses global h2 styling from global.css */
+.textContent h2 {
+  margin: 0 0 1.5rem 0;
+}
+
+.description {
+  /* Inherits global p styling, just override max-width */
+  max-width: 50ch;
+  margin: 0;
+}
+
+.imageSection {
+  order: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.mainImage {
+  width: 280px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 2;
+}
+
+.secondaryImage {
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: absolute;
+  top: 50px;
+  right: -50px;
+  z-index: 1;
+}
+
+/* Tablet and Desktop */
+@media (min-width: 768px) {
+  .about {
+    padding: 4rem 0;
+  }
+
+  .aboutContent {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .textContent {
+    order: 1;
+    padding-right: 2rem;
+  }
+
+  .imageSection {
+    order: 2;
+    min-height: 400px;
+  }
+
+  .mainImage {
+    width: 350px;
+    height: 450px;
+  }
+
+  .secondaryImage {
+    width: 250px;
+    height: 320px;
+    top: 60px;
+    right: -60px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .aboutContent {
+    gap: 6rem;
+  }
+
+  .textContent {
+    padding-right: 3rem;
+  }
+
+  .imageSection {
+    min-height: 500px;
+  }
+
+  .mainImage {
+    width: 400px;
+    height: 500px;
+  }
+
+  .secondaryImage {
+    width: 300px;
+    height: 380px;
+    top: 80px;
+    left: -80px;
+  }
+}

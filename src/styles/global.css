@@ -193,17 +193,7 @@ img {
   margin: 0 auto;
   padding: 0 1rem;
 }
-
-/* ----------------------------- */
-/* SECTIONS (base layout) */
-/* ----------------------------- */
-
-#hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2rem;
-}
+ 
 
 #highlights .specials-container {
   display: flex;
@@ -211,23 +201,6 @@ img {
   overflow-x: auto;
 }
 
-.dish-card {
-  min-width: 200px;
-  border: 1px solid var(--border);
-  padding: 1rem;
-  border-radius: var(--radius);
-}
+ 
 
-#testimonials .reviews {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-}
-
-footer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 2rem;
-  background: var(--primary);
-  color: var(--primary-foreground);
-}
+ 

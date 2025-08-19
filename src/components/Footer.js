@@ -1,22 +1,51 @@
-import logo from "../assets/Logo.svg";
+import logo from "../assets/Logo-white.svg";
+import styles from '../styles/Footer.module.css';
 
 export default function Footer() {
   return (
-    <footer style={{ background: '#333', color: '#fff', padding: '2rem' }}>
-      <img src={logo} alt="Little Lemon Logo" />
-      <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#menu">Menu</a></li>
-        </ul>
-      </nav>
-      <div className="contact">
-        <p>123 Main Street, Chicago</p>
-        <p>(555) 555-5555</p>
-      </div>
-      <div className="social">
-        <a href="#">Facebook</a> | <a href="#">Instagram</a>
+    <footer className={styles.footer}>
+      <div className="container">
+        <div className={styles.footerContent}>
+          
+          {/* Logo */}
+          <div className={styles.logoSection}>
+            <img src={logo} alt="Little Lemon Logo" className={styles.logo} />
+          </div>
+
+          {/* Doormat Navigation */}
+          <div className={styles.navSection}>
+            <h4>Doormat Navigation</h4>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/menu">Menu</a></li>
+              <li><a href="/reservations">Reservations</a></li>
+              <li><a href="/order">Order Online</a></li>
+              <li><a href="/login">Login</a></li>
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div className={styles.contactSection}>
+            <h4>Contact</h4>
+            <ul>
+              <li>123 Lemon St, Chicago, IL</li>
+              <li>+1 (312) 555-7890</li>
+              <li>info@littlelemon.com</li>
+            </ul>
+          </div>
+
+          {/* Social Media Links */}
+          <div className={styles.socialSection}>
+            <h4>Social Media Links</h4>
+            <ul>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">Twitter</a></li>
+            </ul>
+          </div>
+
+        </div>
       </div>
     </footer>
   );

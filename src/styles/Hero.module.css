@@ -31,7 +31,6 @@
 .hero p {
   font-size: 1rem;
   line-height: 1.5;
-  color: var(--muted-foreground);
   margin-bottom: 1.5rem;
 }
 
