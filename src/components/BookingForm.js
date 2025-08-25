@@ -1,22 +1,47 @@
-import { useState } from "react";
+// BookingForm.js
 import styles from "../styles/Booking.module.css";
+import React, { useState } from "react";
 
-export default function BookingForm({ onSubmit }) {
+export default function BookingForm({ availableTimes, onSubmit, dispatch }) {
   const [formData, setFormData] = useState({
     date: "",
-    time: "",
+    selectedTime: "", 
     guests: "",
     name: "",
     email: "",
     occasion: "",
   });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    if (name === "date") {
+      dispatch({ type: "UPDATE_TIMES", payload: value });
+    }
+  };
+
+  const handleFormChange = (name, value) => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+  
+  const handleTimeSelection = (selectedTime) => {
+    handleFormChange("selectedTime", selectedTime); // Змінив на selectedTime
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Валідація обраного часу
+    if (!formData.selectedTime) {
+      alert("Please select a time");
+      return;
+    }
+    
     if (onSubmit) {
       onSubmit(formData);
     }
@@ -30,37 +55,37 @@ export default function BookingForm({ onSubmit }) {
           type="date"
           name="date"
           value={formData.date}
-          onChange={handleChange}
+          onChange={handleInputChange}
           required
         />
       </label>
 
-      <label>
-        Available Times*
+      <fieldset className={styles.timeFieldset}>
+        <legend>Available Times*</legend>
         <div className={styles.timeOptions}>
-          {["5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM", "10:00 PM"].map(
-            (t) => (
+          {availableTimes.map((time) => {
+            const isActive = formData.selectedTime === time; // Змінив на selectedTime
+            return (
               <button
                 type="button"
-                key={t}
-                className={`${styles.timeBtn} ${
-                  formData.time === t ? styles.active : ""
-                }`}
-                onClick={() => setFormData({ ...formData, time: t })}
+                key={time}
+                className={`${styles.timeBtn} ${isActive ? styles.active : ""}`}
+                aria-pressed={isActive}
+                onClick={() => handleTimeSelection(time)}
               >
-                {t}
+                {time}
               </button>
-            )
-          )}
+            );
+          })}
         </div>
-      </label>
+      </fieldset>
 
       <label htmlFor="occasion">Occasion</label>
       <select
         id="occasion"
         name="occasion"
         value={formData.occasion}
-        onChange={handleChange}
+        onChange={handleInputChange}
       >
         <option value="">Select occasion</option>
         <option value="Birthday">Birthday</option>
@@ -72,7 +97,7 @@ export default function BookingForm({ onSubmit }) {
         <select
           name="guests"
           value={formData.guests}
-          onChange={handleChange}
+          onChange={handleInputChange}
           required
         >
           <option value="">Select guests</option>
@@ -90,7 +115,7 @@ export default function BookingForm({ onSubmit }) {
           type="text"
           name="name"
           value={formData.name}
-          onChange={handleChange}
+          onChange={handleInputChange}
           placeholder="Enter your name"
           required
         />
@@ -102,14 +127,14 @@ export default function BookingForm({ onSubmit }) {
           type="email"
           name="email"
           value={formData.email}
-          onChange={handleChange}
+          onChange={handleInputChange}
           placeholder="Enter email address"
           required
         />
       </label>
 
       <button type="submit" className={styles.confirmBtn}>
-        Confirm booking
+        Make your reservation
       </button>
     </form>
   );

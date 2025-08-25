@@ -1,4 +1,4 @@
-.bookingSection {
+.reservationSection {
   padding: 2rem;
   background: var(--background);
   color: var(--foreground);
@@ -46,6 +46,22 @@ select {
   flex-wrap: wrap;
   gap: 0.5rem;
 }
+.timeFieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.timeFieldset > legend {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
 
 .timeBtn {
   padding: 0.5rem 1rem;
@@ -57,18 +73,16 @@ select {
   transition: all 0.2s ease;
 }
 
-.timeBtn:hover {
-  background: var(--secondary);
-  color: var(--secondary-foreground);
-}
-
-.timeBtn.active {
+ 
+.active {
   background: var(--primary);
   color: var(--primary-foreground);
+  border-color: var(--primary);
 }
 
 .confirmBtn {
   background: var(--secondary);
+  margin-bottom: 3rem;
   color: var(--secondary-foreground);
   font-weight: 700;
   padding: 0.75rem;
